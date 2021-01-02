@@ -1,1 +1,2 @@
-Aplikasi cerita rakyat interaktif berbasis android 
+# Dongengku
+Aplikasi cerita rakyat interaktif berbasis android
