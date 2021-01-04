@@ -70,41 +70,46 @@ class _StoryPageState extends State<StoryPage>{
                   height: defaultHeight / 1.7,
                   child: Column(
                     children: [
-                      ColumnSuper(
-                        outerDistance: -(defaultHeight / 3.55),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                              SizedBox(width: defaultWidth / 5),
-                              Image(
-                                image: AssetImage('assets/books/${widget.dongeng.cover}'),
-                                height: defaultHeight / 3,
+                          ColumnSuper(
+                            outerDistance: -(defaultHeight / 3.55),
+                            children: [
+                              Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                  SizedBox(width: defaultWidth / 5),
+                                  Image(
+                                    image: AssetImage('assets/books/${widget.dongeng.cover}'),
+                                    height: defaultHeight / 3,
+                                  ),
+                                  SizedBox(width: defaultWidth / 20),
+                                  InkWell(
+                                    onTap: () {
+                                      if(!stats){
+                                        setState(() {
+                                          iconSave = Icons.bookmark;
+                                          stats = true;
+                                        });
+                                      }
+                                      else{
+                                        setState(() {
+                                          iconSave = Icons.bookmark_border_rounded;
+                                          stats = false;
+                                        });
+                                      }
+                                    },
+                                      child: Icon(
+                                        iconSave,
+                                        color: Colors.red,
+                                        size: defaultHeight / 16,)
+                                  )
+                                ],
                               ),
-                              SizedBox(width: defaultWidth / 20),
-                              InkWell(
-                                onTap: () {
-                                  if(!stats){
-                                    setState(() {
-                                      iconSave = Icons.bookmark;
-                                      stats = true;
-                                    });
-                                  }
-                                  else{
-                                    setState(() {
-                                      iconSave = Icons.bookmark_border_rounded;
-                                      stats = false;
-                                    });
-                                  }
-                                },
-                                  child: Icon(
-                                    iconSave,
-                                    color: Colors.red,
-                                    size: defaultHeight / 16,)
-                              )
                             ],
                           ),
-                          SizedBox(height: defaultHeight / 40),
+                          SizedBox(height: defaultHeight / 15),
                           Row(
                             children: <Widget>[
                               Column(
@@ -165,7 +170,7 @@ class _StoryPageState extends State<StoryPage>{
                                     style: TextStyle(
                                       fontSize: defaultHeight / 60
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ],
@@ -257,39 +262,42 @@ class _StoryPageState extends State<StoryPage>{
                           ),
                           SizedBox(height: defaultWidth / 30),
                           Container(
-                            width: defaultWidth / 1.25,
-                            height: defaultHeight / 5.7,
+                            padding: EdgeInsets.only(left: defaultWidth / 25),
+                            margin: EdgeInsets.only(bottom: defaultHeight / 45),
+                            width: defaultWidth / 1.15,
                             child: Text(
                               widget.dongeng.deskripsi,
                               style: TextStyle(fontSize: defaultHeight / 50),
                             ),
                           ),
-                          SizedBox(height: defaultWidth / 50),
-                          RaisedButton(
-                            onPressed: (){
-                              setState(() {
-                                player.stop();
-                                playbtn = Icons.play_circle_outline_rounded;
-                                playing = false;
-                              });
-                              Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => ReadPage()),
-                              );
-                            },
-                            elevation: 0.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            color: Color(0xff50c9c0),
-                            child: Container(
-                              width: defaultWidth / 2,
-                              child: Text(
-                                'BACA CERITA',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xffffffff),
-                                  letterSpacing: 2.0,
-                                  fontSize: defaultHeight / 45,
+                          Align(
+                            alignment: Alignment.center,
+                            child: RaisedButton(
+                              onPressed: (){
+                                setState(() {
+                                  player.stop();
+                                  playbtn = Icons.play_circle_outline_rounded;
+                                  playing = false;
+                                });
+                                Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => ReadPage()),
+                                );
+                              },
+                              elevation: 0.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              color: Color(0xff50c9c0),
+                              child: Container(
+                                width: defaultWidth / 2,
+                                child: Text(
+                                  'BACA CERITA',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xffffffff),
+                                    letterSpacing: 2.0,
+                                    fontSize: defaultHeight / 45,
+                                  ),
                                 ),
                               ),
                             ),
