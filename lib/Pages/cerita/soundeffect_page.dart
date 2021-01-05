@@ -24,23 +24,12 @@ class _SoundEffectPageState extends State<SoundEffectPage> {
       body: Column(
         children: <Widget>[
           Container(
+            alignment: Alignment.center,
             padding: EdgeInsets.all(defaultHeight / 50),
             height: defaultHeight / 1.5,
-            child: Column(
-              children: <Row>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: barisEfek1.map((efek) => SoundEffectTemplate(efek: efek)).toList()
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: barisEfek2.map((efek) => SoundEffectTemplate(efek: efek)).toList()
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: barisEfek3.map((efek) => SoundEffectTemplate(efek: efek)).toList()
-                ),
-              ],
+            child: Wrap(
+                alignment: WrapAlignment.spaceEvenly,
+                children: barisEfek.map((efek) => SoundEffectTemplate(efek: efek)).toList()
             ),
           ),
           SizedBox(height: defaultHeight / 9),

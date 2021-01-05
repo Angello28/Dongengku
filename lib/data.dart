@@ -281,6 +281,4 @@ List<Dongeng> daftarDongeng5 = [dongeng_7];
 List<Dongeng> daftarDongeng6 = [dongeng_1, dongeng_2, dongeng_3, dongeng_4, dongeng_5, dongeng_6, dongeng_7];
 List<Dongeng> daftarDongeng7 = [dongeng_1, dongeng_2];
 
-List<KomponenEfekSuara> barisEfek1 = [efek1, efek2, efek3];
-List<KomponenEfekSuara> barisEfek2 = [efek4, efek5, efek6];
-List<KomponenEfekSuara> barisEfek3 = [efek7, efek8, efek9];
+List<KomponenEfekSuara> barisEfek = [efek1, efek2, efek3, efek4, efek5, efek6, efek7, efek8, efek9];

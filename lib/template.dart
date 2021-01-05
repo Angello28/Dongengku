@@ -1616,71 +1616,64 @@ class _SoundEffectTemplateState extends State<SoundEffectTemplate> {
           });
         }
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            backgroundColor: widget.efek.color,
-            radius: defaultHeight / 15,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image(
-                  image: AssetImage('assets/icons/${widget.efek.iconName}'),
-                  height: defaultHeight / 20,
-                ),
-                SizedBox(height: defaultHeight / 60),
-                Container(
-                  width: defaultWidth / 5,
-                  child: Text(
-                    widget.efek.labelEfek,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: defaultHeight / 65
-                    ),
+      child: Container(
+        width: defaultWidth / 3.5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundColor: widget.efek.color,
+              radius: defaultHeight / 15,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image(
+                    image: AssetImage('assets/icons/${widget.efek.iconName}'),
+                    height: defaultHeight / 20,
                   ),
-                )
-              ],
+                  SizedBox(height: defaultHeight / 60),
+                  Container(
+                    width: defaultWidth / 5,
+                    child: Text(
+                      widget.efek.labelEfek,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: defaultHeight / 65
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          Visibility(
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            visible: widget.efek.active,
-            child: Row(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.zero,
-                  width: defaultWidth / 4,
-                  child: Slider(
-                      activeColor: Color(0xffff8da0),
-                      inactiveColor: Colors.grey[350],
-                      value: widget.efek.value,
-                      min: 0.0,
-                      max: 100.0,
-                      onChanged: (value){
-                        setState(() {
-                          widget.efek.value = value;
-                        });
-                      }),
-                ),
-                InkWell(
-                    onTap: (){
-                      setState(() {
-                        widget.efek.color = Color(0xfffdb9c4);
-                        widget.efek.active = false;
-                      });
-                    },
-                    child: Icon(
-                      Icons.stop, color: Color(0xffff8da0), size: defaultHeight / 40)
-                ),
-              ],
+            Visibility(
+              maintainSize: true,
+              maintainAnimation: true,
+              maintainState: true,
+              visible: widget.efek.active,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.zero,
+                    width: defaultWidth / 4,
+                    child: Slider(
+                        activeColor: Color(0xffff8da0),
+                        inactiveColor: Colors.grey[350],
+                        value: widget.efek.value,
+                        min: 0.0,
+                        max: 100.0,
+                        onChanged: (value){
+                          setState(() {
+                            widget.efek.value = value;
+                          });
+                        }),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
