@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Text(
-                        'Popouler',
+                        'Populer',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: defaultHeight / 40,
