@@ -24,7 +24,7 @@ class _DubberListPageState extends State<DubberListPage> {
         backgroundColor: Color(0xff50c9c0),
       ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(defaultWidth / 18, defaultHeight / 50, defaultWidth / 18, defaultHeight / 50),
+        padding: EdgeInsets.fromLTRB(defaultWidth / 18, defaultHeight / 50, defaultWidth / 18, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -41,20 +41,23 @@ class _DubberListPageState extends State<DubberListPage> {
               height: defaultHeight / 20,
               color: Color(0xff9d9d9d),
             ),
-            Card(
-              elevation: 0.0,
-              color: Color(0xfffbfef3),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(defaultWidth / 35),
-                child: Container(
-                  height: defaultHeight / 1.45,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: daftar_2.map((pengguna) => CardDubberList(pengguna: pengguna)).toList()
+            Expanded(
+              child: Container(
+                child: SingleChildScrollView(
+                  child: Card(
+                    elevation: 0.0,
+                    color: Color(0xfffbfef3),
+                    margin: EdgeInsets.only(bottom: defaultHeight / 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(defaultWidth / 35),
+                      child: Container(
+                        child: Column(
+                          children: daftar_2.map((pengguna) => CardDubberList(pengguna: pengguna)).toList()
+                        ),
+                      ),
                     ),
                   ),
                 ),

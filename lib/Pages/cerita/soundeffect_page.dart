@@ -27,9 +27,11 @@ class _SoundEffectPageState extends State<SoundEffectPage> {
             alignment: Alignment.center,
             padding: EdgeInsets.all(defaultHeight / 50),
             height: defaultHeight / 1.5,
-            child: Wrap(
-                alignment: WrapAlignment.spaceEvenly,
-                children: barisEfek.map((efek) => SoundEffectTemplate(efek: efek)).toList()
+            child: SingleChildScrollView(
+              child: Wrap(
+                  alignment: WrapAlignment.spaceEvenly,
+                  children: barisEfek.map((efek) => SoundEffectTemplate(efek: efek)).toList()
+              ),
             ),
           ),
           SizedBox(height: defaultHeight / 9),

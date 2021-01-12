@@ -1618,6 +1618,7 @@ class _SoundEffectTemplateState extends State<SoundEffectTemplate> {
       },
       child: Container(
         width: defaultWidth / 3.5,
+        margin: EdgeInsets.only(left: defaultWidth / 110, right: defaultWidth / 110),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
