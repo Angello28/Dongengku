@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dongengku/Pages/cerita/geography_page.dart';
+import 'package:dongengku/Pages/cerita/history_page.dart';
+import 'package:dongengku/Pages/cerita/culture_page.dart';
+import 'package:dongengku/Pages/cerita/travel_page.dart';
 
 class EncyclopediaPage extends StatefulWidget {
   @override
@@ -130,44 +133,51 @@ class _EncyclopediaPageState extends State<EncyclopediaPage> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: defaultHeight / 5,
-                      width: defaultHeight / 5,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25.0),
-                        image: DecorationImage(
-                          image: AssetImage('assets/others/sejarah.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Card(
-                        margin: EdgeInsets.zero,
-                        elevation: 0.0,
-                        color: Color(0xbb515151),
-                        shape: RoundedRectangleBorder(
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HistoryPage()),
+                        );
+                      },
+                      child: Container(
+                        height: defaultHeight / 5,
+                        width: defaultHeight / 5,
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25.0),
+                          image: DecorationImage(
+                            image: AssetImage('assets/others/sejarah.jpg'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            SizedBox(height: defaultHeight / 20),
-                            Text('SEJARAH',
-                              style: TextStyle(
-                                  fontSize: defaultHeight / 45,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2.0
+                        child: Card(
+                          margin: EdgeInsets.zero,
+                          elevation: 0.0,
+                          color: Color(0xbb515151),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(height: defaultHeight / 20),
+                              Text('SEJARAH',
+                                style: TextStyle(
+                                    fontSize: defaultHeight / 45,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0
+                                ),
                               ),
-                            ),
-                            SizedBox(height: defaultHeight / 15),
-                            Text('Klik untuk membaca',
-                              style: TextStyle(
-                                  fontSize: defaultHeight / 75,
-                                  color: Colors.white,
-                                  letterSpacing: 2.0
+                              SizedBox(height: defaultHeight / 15),
+                              Text('Klik untuk membaca',
+                                style: TextStyle(
+                                    fontSize: defaultHeight / 75,
+                                    color: Colors.white,
+                                    letterSpacing: 2.0
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -177,85 +187,99 @@ class _EncyclopediaPageState extends State<EncyclopediaPage> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children:<Widget>[
-                      Container(
-                        height: defaultHeight / 5,
-                        width: defaultHeight / 5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25.0),
-                          image: DecorationImage(
-                            image: AssetImage('assets/others/tortor.jpg'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Card(
-                          margin: EdgeInsets.zero,
-                          elevation: 0.0,
-                          color: Color(0xbb515151),
-                          shape: RoundedRectangleBorder(
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => CulturePage()),
+                          );
+                        },
+                        child: Container(
+                          height: defaultHeight / 5,
+                          width: defaultHeight / 5,
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
+                            image: DecorationImage(
+                              image: AssetImage('assets/others/tortor.jpg'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              SizedBox(height: defaultHeight / 20),
-                              Text('BUDAYA',
-                                style: TextStyle(
-                                    fontSize: defaultHeight / 45,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 2.0
+                          child: Card(
+                            margin: EdgeInsets.zero,
+                            elevation: 0.0,
+                            color: Color(0xbb515151),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                SizedBox(height: defaultHeight / 20),
+                                Text('BUDAYA',
+                                  style: TextStyle(
+                                      fontSize: defaultHeight / 45,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.0
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: defaultHeight / 15),
-                              Text('Klik untuk membaca',
-                                style: TextStyle(
-                                    fontSize: defaultHeight / 75,
-                                    color: Colors.white,
-                                    letterSpacing: 2.0
+                                SizedBox(height: defaultHeight / 15),
+                                Text('Klik untuk membaca',
+                                  style: TextStyle(
+                                      fontSize: defaultHeight / 75,
+                                      color: Colors.white,
+                                      letterSpacing: 2.0
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Container(
-                        height: defaultHeight / 5,
-                        width: defaultHeight / 5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25.0),
-                          image: DecorationImage(
-                            image: AssetImage('assets/others/wisata.jpg'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Card(
-                          margin: EdgeInsets.zero,
-                          elevation: 0.0,
-                          color: Color(0xbb515151),
-                          shape: RoundedRectangleBorder(
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => TravelPage()),
+                          );
+                        },
+                        child: Container(
+                          height: defaultHeight / 5,
+                          width: defaultHeight / 5,
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25.0),
+                            image: DecorationImage(
+                              image: AssetImage('assets/others/wisata.jpg'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              SizedBox(height: defaultHeight / 20),
-                              Text('WISATA',
-                                style: TextStyle(
-                                    fontSize: defaultHeight / 45,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 2.0
+                          child: Card(
+                            margin: EdgeInsets.zero,
+                            elevation: 0.0,
+                            color: Color(0xbb515151),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                SizedBox(height: defaultHeight / 20),
+                                Text('WISATA',
+                                  style: TextStyle(
+                                      fontSize: defaultHeight / 45,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.0
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: defaultHeight / 15),
-                              Text('Klik untuk membaca',
-                                style: TextStyle(
-                                    fontSize: defaultHeight / 75,
-                                    color: Colors.white,
-                                    letterSpacing: 2.0
+                                SizedBox(height: defaultHeight / 15),
+                                Text('Klik untuk membaca',
+                                  style: TextStyle(
+                                      fontSize: defaultHeight / 75,
+                                      color: Colors.white,
+                                      letterSpacing: 2.0
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
