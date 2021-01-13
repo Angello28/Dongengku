@@ -7,7 +7,7 @@ class SearchStory extends StatefulWidget {
   @override
   _SearchStoryState createState() => _SearchStoryState();
 }
-
+TextEditingController SearchDubberController = new TextEditingController();
 class _SearchStoryState extends State<SearchStory> {
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class _SearchStoryState extends State<SearchStory> {
                         Container(
                           width: defaultWidth / 1.5,
                           child: TextField(
+                            controller: SearchDubberController,
                             decoration: InputDecoration(
                               hintText: 'Cari Dongeng',
                               hintStyle: TextStyle(
@@ -54,7 +55,9 @@ class _SearchStoryState extends State<SearchStory> {
                           color: Color(0xff515151),
                         ),
                         IconButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            FocusScope.of(context).requestFocus(new FocusNode());
+                          },
                           icon: Icon(
                             Icons.search,
                             size: defaultWidth / 15,
@@ -87,7 +90,7 @@ class _SearchStoryState extends State<SearchStory> {
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: daftarDongeng3.map((dongeng) => CardSearchStory(dongeng: dongeng,)).toList()
+                            children: daftarDongeng3.map((dongeng) => CardSearchStory(dongeng: dongeng, Teks: SearchDubberController.text)).toList()
                           ),
                         ),
                         SizedBox(height: defaultHeight / 50),

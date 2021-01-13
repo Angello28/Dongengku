@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:dongengku/Pages/beranda/dubberdetail_page.dart';
@@ -320,107 +321,133 @@ class CardDubberList extends StatelessWidget {
 
 class CardSearchDubber extends StatelessWidget {
   final Pengguna pengguna;
-  CardSearchDubber({this.pengguna});
+  final String Teks;
+  CardSearchDubber({this.pengguna, this.Teks});
 
   @override
   Widget build(BuildContext context) {
     double defaultWidth = MediaQuery.of(context).size.width;
     double defaultHeight = MediaQuery.of(context).size.height;
 
-    return InkWell(
-      onTap: () async{
-        await Navigator.push(context,
-          MaterialPageRoute(builder: (context) => DubberDetailPage(pengguna: pengguna)),
-        );
-      },
-      child: Card(
-        color: Color(0xfffbfef3),
-        elevation: 0.0,
-        child: Padding(
-          padding: EdgeInsets.only(left: defaultWidth / 30, right: defaultWidth / 30, top: defaultHeight / 80),
-          child: Row(
-            children: <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage('assets/profile_images/${pengguna.profilPic}'),
-                radius: defaultHeight / 18,
-              ),
-              SizedBox(
-                width: defaultWidth / 20,
-              ),
-              Container(
-                width: 0.5,
-                height: defaultHeight / 9,
-                color: Color(0xff515151),
-              ),
-              SizedBox(
-                width: defaultWidth / 20,
-              ),
-              SizedBox(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      pengguna.namaDepan,
-                      style: TextStyle(
-                        fontSize: defaultHeight / 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: defaultHeight / 150,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          'Rating :',
-                          style: TextStyle(
-                            fontSize: defaultHeight / 65,
-                          ),
-                        ),
-                        ImageIcon(
-                          AssetImage('assets/icons/icon_star.png'),
-                          color: Color(0xfff1c40f),
-                          size: defaultHeight / 65,
-                        ),
-                        Text(
-                          pengguna.rating.toString(),
-                          style: TextStyle(
-                            color: Color(0xffac890d),
-                            fontSize: defaultHeight / 65,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: defaultHeight / 150,
-                    ),
-                    Text(
-                      'Sudah didengarkan ${pengguna.jumlahDidengar} kali',
-                      style: TextStyle(
-                        fontSize: defaultHeight / 65,
-                      ),
-                    ),
-                    SizedBox(
-                      height: defaultHeight / 150,
-                    ),
-                    Text(
-                      'Bergabung sejak ${pengguna.bergabung.day} ${monthToString(pengguna.bergabung.month)} ${pengguna.bergabung.year}',
-                      style: TextStyle(
-                        fontSize: defaultHeight / 65,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
+    var str = Teks.toLowerCase();
+    int resultN = pengguna.namaDepan.toLowerCase().indexOf(str);
+    int resultID = pengguna.id.indexOf(str);
+    int resultJ = pengguna.julukan.toLowerCase().indexOf(str);
+    int resultB = pengguna.namaBelakang.toLowerCase().indexOf(str);
+    int resultP = pengguna.peringkatSebagaiDubber.toLowerCase().indexOf(str);
+    int resultR = pengguna.peringkatSebagaiPembaca.toLowerCase().indexOf(str);
+
+    if(resultR > -1 || resultP > -1 || resultB > -1 || resultJ > -1
+        || resultID > -1 || resultN > -1) {
+
+      return InkWell(
+        onTap: () async {
+          await Navigator.push(context,
+            MaterialPageRoute(
+                builder: (context) => DubberDetailPage(pengguna: pengguna))
+          );
+        },
+
+        child: Card(
+          color: Color(0xfffbfef3),
+          elevation: 0.0,
+          child: Padding(
+            padding: EdgeInsets.only(left: defaultWidth / 30,
+                right: defaultWidth / 30,
+                top: defaultHeight / 80),
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: AssetImage(
+                      'assets/profile_images/${pengguna.profilPic}'),
+                  radius: defaultHeight / 18,
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: defaultWidth / 20,
+                ),
+                Container(
+                  width: 0.5,
+                  height: defaultHeight / 9,
+                  color: Color(0xff515151),
+                ),
+                SizedBox(
+                  width: defaultWidth / 20,
+                ),
+                SizedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        pengguna.namaDepan,
+                        style: TextStyle(
+                          fontSize: defaultHeight / 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeight / 150,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            'Rating :',
+                            style: TextStyle(
+                              fontSize: defaultHeight / 65,
+                            ),
+                          ),
+                          ImageIcon(
+                            AssetImage('assets/icons/icon_star.png'),
+                            color: Color(0xfff1c40f),
+                            size: defaultHeight / 65,
+                          ),
+                          Text(
+                            pengguna.rating.toString(),
+                            style: TextStyle(
+                              color: Color(0xffac890d),
+                              fontSize: defaultHeight / 65,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: defaultHeight / 150,
+                      ),
+                      Text(
+                        'Sudah didengarkan ${pengguna.jumlahDidengar} kali',
+                        style: TextStyle(
+                          fontSize: defaultHeight / 65,
+                        ),
+                      ),
+                      SizedBox(
+                        height: defaultHeight / 150,
+                      ),
+                      Text(
+                        'Bergabung sejak ${pengguna.bergabung
+                            .day} ${monthToString(
+                            pengguna.bergabung.month)} ${pengguna.bergabung
+                            .year}',
+                        style: TextStyle(
+                          fontSize: defaultHeight / 65,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }else{
+      return new Container();
+    }
+
   }
+
 }
+
 
 class CardChooseDubber extends StatelessWidget {
   final Pengguna pengguna;
@@ -593,86 +620,104 @@ class CardDongengHome extends StatelessWidget {
 
 class CardSearchStory extends StatelessWidget {
   final Dongeng dongeng;
-  CardSearchStory({this.dongeng});
+  final String Teks;
+  CardSearchStory({this.dongeng, this.Teks});
 
   @override
   Widget build(BuildContext context) {
     double defaultWidth = MediaQuery.of(context).size.width;
     double defaultHeight = MediaQuery.of(context).size.height;
 
-    return InkWell(
-      onTap: () async{
-        await Navigator.push(context,
-          MaterialPageRoute(builder: (context) => StoryPage(dongeng: dongeng)),
-        );
-      },
-      child: Card(
-        color: Color(0xfffbfef3),
-        elevation: 0.0,
-        child: Padding(
-          padding: EdgeInsets.only(left: defaultWidth / 30, right: defaultWidth / 30, top: defaultHeight / 80),
-          child: Row(
-            children: <Widget>[
-              Image(
-                image: AssetImage('assets/books/${dongeng.cover}'),
-                width: defaultWidth / 4,
-              ),
-              SizedBox(
-                width: defaultWidth / 40,
-              ),
-              Container(
-                width: 0.5,
-                height: defaultHeight / 6.5,
-                color: Color(0xff515151),
-              ),
-              SizedBox(
-                width: defaultWidth / 40,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      width: defaultWidth / 2.5,
-                      child: Text(
-                        dongeng.judul,
-                        style: TextStyle(
-                          fontSize: defaultHeight / 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: defaultHeight / 70,
-                    ),
-                    Row(
+    var str = Teks.toLowerCase();
+    int resultDes = dongeng.deskripsi.toLowerCase().indexOf(str);
+    int resultJudul = dongeng.judul.toLowerCase().indexOf(str);
+    int resultDaerah = dongeng.daerah.toLowerCase().indexOf(str);
+    int resultN = dongeng.jumlahDibaca.toString().indexOf(str);
+    int resultDongeng = dongeng.jumlahDidongengkanPengguna1.toString().indexOf(str);
+
+
+    if (resultJudul >-1 || resultDaerah>-1 || resultDes>-1 || resultN>-1 ||
+      resultDongeng>-1) {
+        return InkWell(
+          onTap: () async {
+            await Navigator.push(context,
+              MaterialPageRoute(
+                  builder: (context) => StoryPage(dongeng: dongeng)),
+            );
+          },
+          child: Card(
+            color: Color(0xfffbfef3),
+            elevation: 0.0,
+            child: Padding(
+              padding: EdgeInsets.only(left: defaultWidth / 30,
+                  right: defaultWidth / 30,
+                  top: defaultHeight / 80),
+              child: Row(
+                children: <Widget>[
+                  Image(
+                    image: AssetImage('assets/books/${dongeng.cover}'),
+                    width: defaultWidth / 4,
+                  ),
+                  SizedBox(
+                    width: defaultWidth / 40,
+                  ),
+                  Container(
+                    width: 0.5,
+                    height: defaultHeight / 6.5,
+                    color: Color(0xff515151),
+                  ),
+                  SizedBox(
+                    width: defaultWidth / 40,
+                  ),
+                  Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                        SizedBox(
+                          width: defaultWidth / 2.5,
+                          child: Text(
+                            dongeng.judul,
+                            style: TextStyle(
+                              fontSize: defaultHeight / 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: defaultHeight / 70,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Dongeng dari ${dongeng.daerah}',
+                              style: TextStyle(
+                                fontSize: defaultHeight / 60,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: defaultHeight / 150,
+                        ),
                         Text(
-                          'Dongeng dari ${dongeng.daerah}',
+                          'Sudah dibaca ${dongeng.jumlahDibaca} kali',
                           style: TextStyle(
                             fontSize: defaultHeight / 60,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: defaultHeight / 150,
-                    ),
-                    Text(
-                      'Sudah dibaca ${dongeng.jumlahDibaca} kali',
-                      style: TextStyle(
-                        fontSize: defaultHeight / 60,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        );
+      } else {
+        return new Container();
+      }
+
   }
 }
 

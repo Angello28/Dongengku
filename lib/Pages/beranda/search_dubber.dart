@@ -9,6 +9,7 @@ class SearchDubber extends StatefulWidget {
   _SearchDubberState createState() => _SearchDubberState();
 }
 
+TextEditingController SearchDubberController = new TextEditingController();
 class _SearchDubberState extends State<SearchDubber> {
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class _SearchDubberState extends State<SearchDubber> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+
                 Card(
                   color: Color(0xffffffff),
                   shape: RoundedRectangleBorder(
@@ -38,6 +40,8 @@ class _SearchDubberState extends State<SearchDubber> {
                         Container(
                           width: defaultWidth / 1.5,
                           child: TextField(
+                            controller: SearchDubberController ,
+
                             decoration: InputDecoration(
                               hintText: 'Cari Dubber',
                               hintStyle: TextStyle(
@@ -55,7 +59,9 @@ class _SearchDubberState extends State<SearchDubber> {
                           color: Color(0xff515151),
                         ),
                         IconButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            FocusScope.of(context).requestFocus(new FocusNode());
+                          },
                           icon: Icon(
                             Icons.search,
                             size: defaultWidth / 15,
@@ -88,10 +94,10 @@ class _SearchDubberState extends State<SearchDubber> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: daftar_3.map((pengguna) => CardSearchDubber(pengguna: pengguna)).toList()
+                            children: daftar_3.map((pengguna) => CardSearchDubber(pengguna: pengguna, Teks : SearchDubberController.text)).toList()
                           ),
                         ),
-                        SizedBox(height: defaultHeight / 50),
+                        SizedBox(height: defaultHeight / 70),
                       ],
                     )
                 ),

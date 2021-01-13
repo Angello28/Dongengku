@@ -20,7 +20,7 @@ String monthToString(int bulan){
       month = "Juni";
       break;
     case 7:
-      month = "July";
+      month = "Juli";
       break;
     case 8:
       month = "Agustus";
