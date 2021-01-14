@@ -354,7 +354,8 @@ class CardSearchDubber extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: defaultWidth / 30,
                 right: defaultWidth / 30,
-                top: defaultHeight / 80),
+                top: defaultHeight / 80,
+                bottom: defaultHeight / 80),
             child: Row(
               children: <Widget>[
                 CircleAvatar(
